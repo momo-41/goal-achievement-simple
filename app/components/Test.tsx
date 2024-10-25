@@ -71,7 +71,10 @@ export default function Home() {
   };
 
   const handleDelete = (id: string) => {
-    setGoals((prev) => prev.filter((goal) => goal.id !== id));
+    const deleteAlert = confirm("削除しますか");
+    if (deleteAlert) {
+      setGoals((prev) => prev.filter((goal) => goal.id !== id));
+    }
   };
 
   return (
@@ -90,6 +93,7 @@ export default function Home() {
             value={newGoal.name}
             onChange={handleInputChange}
             required
+            autoComplete="off"
             margin="normal"
           />
           <TextField
@@ -102,6 +106,7 @@ export default function Home() {
             required
             multiline
             rows={3}
+            autoComplete="off"
             margin="normal"
           />
           <TextField
@@ -113,6 +118,7 @@ export default function Home() {
             value={newGoal.deadline}
             onChange={handleInputChange}
             required
+            autoComplete="off"
             margin="normal"
             InputLabelProps={{
               shrink: true,
